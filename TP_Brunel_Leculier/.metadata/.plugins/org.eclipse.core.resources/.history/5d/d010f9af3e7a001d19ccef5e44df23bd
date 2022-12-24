@@ -1,0 +1,20 @@
+package TP2;
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Dresseur d1 = new Dresseur("Sacha");
+		System.out.println(d1);
+		Pokedex pk1 = new Pokedex("kanto");
+		d1.afficher_equipe();
+		for (int i = 0;i<7;i++) {
+			d1.attraper_Pokemon();
+		}
+		
+		
+		d1.afficher_equipe();
+		System.out.println(d1);
+	}
+
+}

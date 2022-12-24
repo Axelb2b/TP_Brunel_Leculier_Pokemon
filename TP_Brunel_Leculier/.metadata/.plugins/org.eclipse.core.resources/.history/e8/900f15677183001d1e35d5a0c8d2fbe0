@@ -1,0 +1,94 @@
+package TP2;
+import java.util.*;
+
+public class CombatPokemon {
+	
+	
+	public int attaque(Pokemon p1,Pokemon p2) {
+		int multiplicateur_degat = 1;
+		String type_attaquant = p1.getTypes().get(0);
+		ArrayList<String> type_defenseur = p2.getTypes();
+		
+		if (type_attaquant == "normal") {
+			if(type_defenseur.contains("roche")||(type_defenseur.contains("acier"))) {
+				multiplicateur_degat *= 0.5;
+			}else if (type_defenseur.contains("spectre")) {
+				multiplicateur_degat *= 0;
+				return multiplicateur_degat;
+			}
+		}
+		
+		if (type_attaquant == "feu") {
+			if(type_defenseur.contains("feu")||(type_defenseur.contains("eau"))||(type_defenseur.contains("roche")||(type_defenseur.contains("dragon")))) {
+				multiplicateur_degat *= 0.5;
+				
+			}else if ((type_defenseur.contains("plante"))||(type_defenseur.contains("glace"))||(type_defenseur.contains("acier"))||(type_defenseur.contains("insecte"))) {
+				multiplicateur_degat *= 2;
+			}
+				
+				
+		}
+		
+		
+		if (type_attaquant == "eau") {
+			if (type_defenseur.contains("eau")||(type_defenseur.contains("plante"))||(type_defenseur.contains("dragon"))) {
+				multiplicateur_degat *= 0.5;
+			}else if (type_defenseur.contains("eau")||(type_defenseur.contains("plante"))||(type_defenseur.contains("dragon"))) {
+				multiplicateur_degat *= 2;
+			}
+		}
+		
+		if (type_attaquant == "plante") {
+			if ((type_defenseur.contains("feu"))||(type_defenseur.contains("plante"))||(type_defenseur.contains("poison"))||(type_defenseur.contains("vol")||(type_defenseur.contains("insecte")||(type_defenseur.contains("dragon")||(type_defenseur.contains("acier")))))) {
+				multiplicateur_degat *= 0.5;
+			}else if (type_defenseur.contains("eau")||(type_defenseur.contains("sol"))||(type_defenseur.contains("roche"))) {
+				multiplicateur_degat *= 2;
+			}
+				
+				
+			
+		}
+		
+		
+		if (type_attaquant == "electrik") {
+			if (type_defenseur.contains("plante")||(type_defenseur.contains("electrik"))||(type_defenseur.contains("dragon"))) {
+				multiplicateur_degat *= 0.5;
+			}else if (type_defenseur.contains("sol")) {
+				multiplicateur_degat *= 0;
+				return multiplicateur_degat;
+			}else if (type_defenseur.contains("eau")||(type_defenseur.contains("vol"))) {
+				multiplicateur_degat *= 2;
+			}
+				
+		}
+		
+		
+		if (type_attaquant == "glace") {
+			if (type_defenseur.contains("feu")||(type_defenseur.contains("eau"))||(type_defenseur.contains("glace")||(type_defenseur.contains("acier")))) {
+				multiplicateur_degat *= 0.5;
+			}
+			else if (type_defenseur.contains("plante")||(type_defenseur.contains("sol"))||(type_defenseur.contains("vol")||(type_defenseur.contains("dragon")))) {
+				multiplicateur_degat *= 2;
+			}
+		}
+		
+		
+		if (type_attaquant == "combat") {
+			
+		}
+		
+		
+		
+		}
+	
+	
+	
+			
+}
+		
+		
+			
+
+	
+
+

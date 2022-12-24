@@ -1,0 +1,82 @@
+package TP2;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class Pokedex {
+	
+			private ArrayList<Pokemon> pokemon_base;
+			private ArrayList<Pokemon> listePokemons; 
+			private String nom;
+		
+			public Pokedex(String nom) {
+				this.listePokemons = new ArrayList<Pokemon>();
+				this.pokemon_base = new ArrayList<Pokemon>();
+				this.nom=nom;
+				Pokemon P001= new Pokemon(49,45,"plante","poison","bulbizarre",null,"herbizarre",16,0,this);
+				listePokemons.add(P001);
+				Pokemon P002= new Pokemon(62,60,"plante","poison","herbizarre","bulbizarre","florizarre",32,16,this);
+				listePokemons.add(P002);
+				Pokemon P003= new Pokemon(82,80,"plante","poison","florizarre","herbizarre",null,1000,32,this);
+				listePokemons.add(P003);
+				
+				Pokemon P004= new Pokemon(52,39,"feu",null,"salameche",null,"reptincel",16,0,this);
+				listePokemons.add(P004);
+				Pokemon P005= new Pokemon(64,58,"feu",null,"reptincel","salameche","dracaufeu",36,16,this);
+				listePokemons.add(P005);
+				Pokemon P006= new Pokemon(84,78,"feu","vol","dracaufeu","reptincel",null,1000,36,this);
+				listePokemons.add(P006);
+				
+				Pokemon P007= new Pokemon(48,44,"eau",null,"carapuce",null,"carabaffe",16,0,this);
+				listePokemons.add(P007);
+				Pokemon P008= new Pokemon(63,59,"eau",null,"carabaffe","carapuce","tortank",36,16,this);
+				listePokemons.add(P008);
+				Pokemon P009= new Pokemon(83,79,"eau",null,"tortank","carabaffe",null,1000,36,this);
+				listePokemons.add(P009);
+				
+				Pokemon P010= new Pokemon(30,45,"insecte",null,"chenipan",null,"chrysacier",7,0,this);
+				listePokemons.add(P010);
+				Pokemon P011= new Pokemon(2,50,"insecte",null,"chrysacier","chenipan","papilusion",10,7,this);
+				listePokemons.add(P011);
+				Pokemon P012= new Pokemon(45,60,"insecte","vol","papilusion","chrysacier",null,1000,10,this);
+				listePokemons.add(P012);
+				
+				Pokemon P013= new Pokemon(35,40,"insecte","poison","aspicot",null,"coconfort",7,0,this);
+				listePokemons.add(P013);
+				Pokemon P014= new Pokemon(2,45,"insecte","poison","coconfort","aspicot","dardagnan",10,7,this);
+				listePokemons.add(P014);
+				Pokemon P015= new Pokemon(90,65,"insecte","poison","dardagnan","coconfort",null,1000,10,this);
+				listePokemons.add(P015);
+				
+				Pokemon P016= new Pokemon(45,40,"normal","vol","roucoul",null,"roucoups",18,0,this);
+				listePokemons.add(P016);
+				Pokemon P017= new Pokemon(60,63,"normal","vol","roucoups","roucoul","roucarnage",36,18,this);
+				listePokemons.add(P017);
+				Pokemon P018= new Pokemon(80,83,"normal","vol","roucarnage","roucoups",null,1000,36,this);
+				listePokemons.add(P018);
+				
+				Pokemon P019= new Pokemon(56,30,"normal",null,"rattata",null,"rattatac",20,0,this);
+				listePokemons.add(P019);
+				Pokemon P020= new Pokemon(81,55,"normal","vol","rattatac","rattata",null,1000,20,this);
+				listePokemons.add(P020);
+				
+			}
+			public void printPokemons() {
+				for (Pokemon pokemon : listePokemons) {
+		            System.out.println(pokemon);
+			}}
+			
+			public ArrayList<Pokemon> getPokemons() {
+				return this.listePokemons;
+			}	 
+			
+			public void pokemon_base(){
+				for(int i = 0;i<this.listePokemons.size();i++) {
+					if (this.listePokemons.get(i).getEvolution_precedente() == null) {
+						this.pokemon_base.add(this.listePokemons.get(i));
+					}
+				}
+			}
+
+
+	}

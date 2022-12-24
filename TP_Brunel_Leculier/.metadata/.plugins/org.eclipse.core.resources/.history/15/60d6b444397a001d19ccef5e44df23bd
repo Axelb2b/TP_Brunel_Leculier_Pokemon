@@ -1,0 +1,16 @@
+package TP2;
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Dresseur d1 = new Dresseur("Sacha");
+		System.out.println(d1);
+		Pokemon P001= new Pokemon(49,45,"plante","poison","bulbizarre",null,"herbizarre",16,0);
+		d1.afficher_equipe();
+		d1.attraper_Pokemon(P001);
+		d1.afficher_equipe();
+		d1.modifier_equipe_active(P001);
+	}
+
+}

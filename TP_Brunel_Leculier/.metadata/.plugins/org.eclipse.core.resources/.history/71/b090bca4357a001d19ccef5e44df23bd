@@ -1,0 +1,11 @@
+package TP2;
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Dresseur d1 = new Dresseur("Sacha");
+		System.out.println(d1);
+	}
+
+}

@@ -1,0 +1,104 @@
+package TP2;
+import java.util.*;
+
+
+
+public class Dresseur {
+	private String nom;
+	private ArrayList<Pokemon> pokemons;
+	private ArrayList<Bonbon> bonbons;
+	private ArrayList<Pokemon> equipe_active;
+	private Pokedex pokedex= new Pokedex("Kanto");
+	
+	
+	public Dresseur(String nom) {
+		this.nom = nom;
+		this.pokemons = new ArrayList<Pokemon>();
+		this.bonbons = new ArrayList<Bonbon>();
+		this.equipe_active = new ArrayList<Pokemon>();
+	}
+
+	
+	
+	//GETSET
+	public String getNom() {
+		return nom;
+	}
+
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+
+	public ArrayList<Pokemon> getPokemons() {
+		return pokemons;
+	}
+
+
+	public void setPokemons(ArrayList<Pokemon> pokemons) {
+		this.pokemons = pokemons;
+	}
+
+
+	public ArrayList<Bonbon> getBonbons() {
+		return bonbons;
+	}
+
+
+	public void setBonbons(ArrayList<Bonbon> bonbons) {
+		this.bonbons = bonbons;
+	}
+	
+	
+	//Méthodes de L'IHM
+	
+	//Afficher ses pokemons possédés
+	public void afficher_pokemon() {
+		for(int i = 0; i<this.pokemons.size();i++) {
+			System.out.println(pokemons.get(i).toString());
+		}
+	}
+	
+	//Afficher L'équipe Active$
+	public void afficher_equipe() {
+		for(int i = 0;i<this.equipe_active.size();i++) {
+			System.out.println("1 : "+this.equipe_active.get(i).getNom());
+		}
+	}
+	//Afficher les bonbons possedés
+	public void afficher_bonbon() {
+		for(int i =0;i<this.bonbons.size();i++) {
+			System.out.println(this.bonbons.get(i).getNom());
+		}
+	}
+	//modification de l'equipe active
+	public void modifier_equipe_active(Pokemon p) {
+		if (this.equipe_active.size() == 6) {
+			Scanner sc = new Scanner(System.in);
+			this.afficher_equipe();
+			System.out.println("Selectionnez le pokemon a modifier : ");
+			int pos = sc.nextInt();
+			this.equipe_active.add(pos, p);
+			sc.close();
+		}else {
+			this.equipe_active.add(p);
+		}
+		
+		
+	}
+	
+	
+	//Attraper un pokemon en piochant dans le pokedex 
+	public void attraper_Pokemon(Pokemon p) {
+		Random random = new Random();
+		this.pokemons.add(poke_a_attraper.get(random.nextInt(poke_a_attraper.size())));
+	}
+	
+	public String toString() {
+		return "Dresseur "+this.nom+"\n nombre de pokémons : "+this.pokemons.size()+""
+				+ "\n nombre de bonbons : "+this.bonbons.size();
+	}
+	
+
+}

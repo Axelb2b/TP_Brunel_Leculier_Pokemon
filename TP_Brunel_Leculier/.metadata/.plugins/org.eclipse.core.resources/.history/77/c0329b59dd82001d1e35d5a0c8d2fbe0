@@ -1,0 +1,32 @@
+package TP2;
+
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.util.Scanner;
+
+public class DresseurClient {
+    
+	private String host;
+	private int port;
+	private Dresseur dresseur;
+	
+	public DresseurClient(String host,int port,Dresseur dresseur) {
+		this.host = host;
+		this.port = port;
+		this.dresseur = dresseur;
+	}
+	
+	
+	public void run() {
+		try {
+			//Creation du socket de client et connexion au serveur
+			Socket socket = new Socket(host,port);
+			
+			//Ajouter les méthodes pour envoyer pv et type de Pokemon pour le combat
+			socket.getOutputStream().writeUTF()
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

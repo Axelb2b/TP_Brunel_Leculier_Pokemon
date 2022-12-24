@@ -1,0 +1,203 @@
+package TP2;
+
+import java.io.Serializable;
+import java.lang.Math;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Pokemon implements Serializable {
+	
+	private int pc;
+	private int pv;
+	private int niveau;
+	private int niveauEvolution;
+	private ArrayList<String> types;
+	private String nom;
+	private String evolution_precedente;
+	private String evolution_suivante;
+	private String statut = null;
+	private Dresseur dresseur=null;
+	private Pokedex pokedex = new Pokedex("corte");
+	
+	public Pokemon(int pc,int pv,String type1,String type2, String nom, String evolution_precedente,String evolution_suivante,int niveauEvolution,int niveau) {
+		//this.pc = (int) (pc - 10 + 20*Math.random());
+		this.pc = pc;
+		//this.pv = (int) (pv - 10 + 20*Math.random());
+		this.pv = pv;
+		this.types = new ArrayList();
+		this.types.add(type1);
+		if (type2!=null) {
+			this.types.add(type2);
+		}
+		this.nom=nom;
+		this.evolution_precedente=evolution_precedente;
+		this.evolution_suivante=evolution_suivante;
+		this.niveauEvolution=niveauEvolution;
+		this.niveau=niveau;
+	}
+	
+	
+	public int getPc() {
+		return pc;
+	}
+
+
+	public void setPc(int pc) {
+		this.pc = pc;
+	}
+
+
+	public int getPv() {
+		return pv;
+	}
+
+
+	public void setPv(int pv) {
+		this.pv = pv;
+	}
+
+
+	public int getNiveau() {
+		return niveau;
+	}
+
+
+	public void setNiveau(int niveau) {
+		this.niveau = niveau;
+	}
+
+
+	public ArrayList<String> getTypes() {
+		return types;
+	}
+
+
+	public void setTypes(ArrayList<String> types) {
+		this.types = types;
+	}
+
+
+	public String getNom() {
+		return nom;
+	}
+
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+
+	public String getEvolution_precedente() {
+		return evolution_precedente;
+	}
+
+
+	public void setEvolution_precedente(String evolution_precedente) {
+		this.evolution_precedente = evolution_precedente;
+	}
+
+
+	public String getEvolution_suivante() {
+		return evolution_suivante;
+	}
+
+
+	public void setEvolution_suivante(String evolution_suivante) {
+		this.evolution_suivante = evolution_suivante;
+	}
+
+
+	public String getStatut() {
+		return statut;
+	}
+	public int getNiveauEvolution() {
+		return niveauEvolution;
+	}
+
+
+	public void setStatut(String statut) {
+		this.statut = statut;
+	}
+	public boolean peutEvoluer() {
+		return(evolution_suivante !=null);
+	}
+	public boolean aEvoluer() {
+		return(evolution_precedente !=null);
+	}
+	public Pokemon get_evolution(Pokedex pokedex) {
+		ArrayList<Pokemon> listePokemons = pokedex.getPokemons();
+		for (Pokemon pokemon : listePokemons) {
+            if (pokemon.nom==this.evolution_suivante) {
+            	return pokemon;
+            }
+	}
+		System.out.println("ERRERUR");
+		return null;
+	}
+	
+	public void evolue() {
+		System.out.println(this.nom +" évolue en "+this.evolution_suivante);
+		Pokemon suivant = this.get_evolution(pokedex);
+		this.pv = (int)  (suivant.getPv() - 10 + 20*Math.random());
+		this.pc = (int)  (suivant.getPc() - 10 + 20*Math.random());
+		this.types=suivant.getTypes();
+		this.evolution_precedente= this.nom;
+		this.nom= suivant.getNom();
+		this.evolution_suivante=suivant.evolution_suivante;
+		this.niveauEvolution=suivant.getNiveauEvolution();
+	}
+	public void prendNiveau() {
+		this.niveau +=1;
+		System.out.println(this.nom +" Est passé au niveau "+this.niveau);
+		if (this.niveau==this.niveauEvolution) {
+			this.evolue();
+		}
+	}
+	public boolean estKo() {
+		return(this.pv<=0);
+		}
+	// TROUVER LE PAIR
+	public ArrayList<Object> attaque() {
+		ArrayList<Object> compoAttaque = new ArrayList();
+		String type = null;
+		int pc = this.pc;
+		if(this.getTypes().get(1)!=null) {
+			System.out.println("Quelle attaque voulez vous faire ?\n1 -> "+this.getTypes().get(0)+"\n2 -> "+this.getTypes().get(1));
+			Scanner in = new Scanner(System.in);
+			int choix = in.nextInt();
+			if (choix==1) {
+				type = this.getTypes().get(0);
+			}else {
+				type = this.getTypes().get(1);
+				
+			}
+			
+		}else {
+			type = this.getTypes().get(0);
+		}
+		compoAttaque.add(pc);
+		compoAttaque.add(type);
+		return (compoAttaque);
+	}
+	
+	
+	
+
+
+	public String toString() {
+		String texte = this.nom + "\npv : "+pv+"\npc : "+pc+"\ntype(s) : ";
+		 for (String type : types) {
+	            texte += type+" ";
+	        }
+		 texte += "\nniveau : " + this.niveau;
+		 if (peutEvoluer()) {
+			 texte += "\npourra evoluer en "+ evolution_suivante+ " au niveau : "+ niveauEvolution;
+		 }
+		 texte +=  "\n------------------------------------------------------------------";
+		 return texte;	
+		}
+	
+	}
+	
+
+

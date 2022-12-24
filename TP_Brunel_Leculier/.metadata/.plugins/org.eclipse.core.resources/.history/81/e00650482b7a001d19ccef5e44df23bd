@@ -1,0 +1,63 @@
+package TP2;
+import java.util.*;
+
+
+
+public class Dresseur {
+	private String nom;
+	private ArrayList<Pokemon> pokemons;
+	private ArrayList<Bonbon> bonbons;
+	private Pokemon[] equipe_active;
+	
+	
+	public Dresseur(String nom) {
+		this.nom = nom;
+		this.pokemons = new ArrayList<Pokemon>();
+		this.bonbons = new ArrayList<Bonbon>();
+		this.equipe_active = new Pokemon[6];
+	}
+
+	
+	
+	//GETSET
+	public String getNom() {
+		return nom;
+	}
+
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+
+	public ArrayList<Pokemon> getPokemons() {
+		return pokemons;
+	}
+
+
+	public void setPokemons(ArrayList<Pokemon> pokemons) {
+		this.pokemons = pokemons;
+	}
+
+
+	public ArrayList<Bonbon> getBonbons() {
+		return bonbons;
+	}
+
+
+	public void setBonbons(ArrayList<Bonbon> bonbons) {
+		this.bonbons = bonbons;
+	}
+	
+	
+	//Méthodes de L'IHM
+	
+	//Afficher ses pokemons
+	public void afficher_pokemon() {
+		for(int i = 0; i<this.pokemons.size();i++) {
+			System.out.println(pokemons.get(i).toString());
+		}
+	}
+	
+
+}
